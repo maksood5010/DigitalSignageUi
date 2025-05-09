@@ -1,0 +1,9 @@
+.shadow {
+    transition: all 0.3s ease;
+  }
+  .shadow:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+  .icon-aed:before {
+    content: "\e900";
+  }
