@@ -1,54 +1,40 @@
 <div class="bg-body-secondary text-center py-5 rounded-2">
-    <h1 class="display-6 fw-bold">
-        File Details Register
-    </h1>
+  <h1 class="display-6 fw-bold">
+    File Details Register
+  </h1>
+  <button class="btn btn-primary mt-4" (click)="openFullscreenInNewTab()">Start Fullscreen Slideshow</button>
 </div>
-<div class="row mt-5">
-    <!-- <div class="col-6">
-        <app-file-details-form></app-file-details-form>
-    </div> -->
-    <div class="container py-4">
-        <div class="d-flex flex-column gap-3">
-            <div class="shadow-sm rounded-4 p-4 border border-light bg-white" *ngFor="let pd of service.list">
 
+<div class="container py-4">
+    <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let pd of service.list">
+            <div class="shadow-sm rounded-4 p-3 border border-light bg-white h-100 d-flex flex-column">
                 <div class="mb-2">
-                    <span class="badge bg-primary fs-6">ID: {{ pd.signageDetailId }}</span>
-                </div>
+        <span class="badge bg-primary fs-6">ID: {{ pd.signageDetailId }}</span>
+      </div>
 
-                <div class="text-secondary mb-1">
-                    <strong>Type:</strong> {{ pd.signageType }}
-                </div>
+      <div class="text-secondary mb-1">
+        <strong>Type:</strong> {{ pd.signageType }}
+      </div>
 
-                <div class="text-secondary mb-1">
-                    <strong>Duration:</strong> {{ pd.signageDuration }}
-                </div>
+      <div class="text-secondary mb-1">
+        <strong>Duration:</strong> {{ pd.signageDuration }}s
+      </div>
 
-                <div class="mt-3">
-                    <strong>Preview:</strong>
-                    <div class="mt-2">
-                        <img [src]="pd.signageUrl" alt="Signage Image" class="img-fluid rounded border"
-                            style="max-height: 300px; object-fit: contain;">
-                    </div>
-                </div>
-
-                <div class="text-muted small mt-3">
-                    <strong>URL:</strong>
-                    <div class="d-flex flex-column flex-md-row align-items-start mt-1 gap-2">
-                        <div class="flex-grow-1 p-2 bg-light rounded text-break">{{ pd.signageUrl }}</div>
-                        <button class="btn btn-sm btn-outline-secondary" (click)="copyToClipboard(pd.signageUrl)">
-                            Copy
-                        </button>
-                    </div>
-                </div>
-                <button class="btn btn-danger btn-sm" (click)="deleteFile(pd.signageDetailId)">
-                    Delete
-                </button>
-                
-
-            </div>
+      <div class="mt-2">
+        <strong>Preview:</strong>
+        <div class="mt-2">
+          <img [src]="pd.signageUrl" alt="Signage Image" class="img-fluid rounded border"
+               style="width: 100%; height: 100px; object-fit: contain;">
         </div>
+      </div>
+
+      <button class="btn btn-danger btn-sm mt-3 w-100" (click)="deleteFile(pd.signageDetailId)">
+        Delete
+      </button>
     </div>
-
-
+  </div>
 </div>
+
+<app-fullscreen-slideshow *ngIf="showFullscreen" (close)="closeFullscreen()"></app-fullscreen-slideshow>
 <app-toast-message></app-toast-message>

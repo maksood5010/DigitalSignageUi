@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FileDetailsFormComponent } from "./file-details-form/file-details-form.component";
 import { FilesDetailService } from '../shared/files-detail.service';
 import { ToastMessageComponent } from '../toast-message/toast-message.component';
+import { FullscreenSlideshowComponent } from '../fullscreen-slideshow/fullscreen-slideshow.component';
 
 
 @Component({
   selector: 'app-file-details',
-  imports: [FileDetailsFormComponent,CommonModule,ToastMessageComponent],
+  imports: [FileDetailsFormComponent, CommonModule, ToastMessageComponent,FullscreenSlideshowComponent],
   templateUrl: './file-details.component.html',
   styleUrl: './file-details.component.css'
 })
@@ -29,6 +30,19 @@ export class FileDetailsComponent implements OnInit {
   //     console.error('Failed to copy:', err);
   //   });
   // }
+  showFullscreen = false;
+
+  openFullscreen() {
+    this.showFullscreen = true;
+  }
+
+  closeFullscreen() {
+    this.showFullscreen = false;
+  }
+  openFullscreenInNewTab() {
+  window.open(`${window.location.origin}/slide`, '_blank');
+}
+
   copyToClipboard(text: string): void {
     navigator.clipboard.writeText(text).then(() => {
       this.toast.show('URL copied to clipboard!');
@@ -44,6 +58,6 @@ export class FileDetailsComponent implements OnInit {
       });
     }
   }
-  
+
 
 }

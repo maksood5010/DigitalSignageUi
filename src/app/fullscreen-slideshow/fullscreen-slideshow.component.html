@@ -1,0 +1,8 @@
+<div class="text-center">
+  <button class="btn btn-primary mb-3" (click)="loadImages()" [disabled]="isActive">Start Slideshow</button>
+  <button class="btn btn-danger mb-3" (click)="stopSlideshow()" [disabled]="!isActive">Stop</button>
+
+  <div *ngIf="isActive" class="fullscreen-container">
+    <img [src]="currentImageUrl" class="img-fluid" style="max-height: 90vh;" />
+  </div>
+</div>

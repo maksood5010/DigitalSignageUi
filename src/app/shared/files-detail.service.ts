@@ -14,6 +14,9 @@ export class FilesDetailService {
   constructor(private http:HttpClient) {
    
   }
+  getList() {
+  return this.http.get<FilesDetail[]>(this.url);
+}
   refreshList(){
     this.http.get(this.url).subscribe({
       next: (data) => {
