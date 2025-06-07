@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { FilesDetail } from './files-detail.model';
+import { HubConnection } from '@aspnet/signalr/dist/esm/HubConnection';
+import { HubConnectionBuilder } from '@aspnet/signalr/dist/esm/HubConnectionBuilder';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilesDetailService {
 
-  url:string = environment.apiBaseUrl + 'SignageDetails/';
+  url:string = environment.apiBaseUrl + 'api/SignageDetails/';
   list : FilesDetail[] = [];
 
   constructor(private http:HttpClient) {
@@ -38,5 +40,8 @@ export class FilesDetailService {
   }
   deleteFile(id: number) {
     return this.http.delete(this.url + id);
+  }
+  sendMessage(text:string) {
+    return this.http.get( environment.apiBaseUrl + 'api/Message');
   }
 }

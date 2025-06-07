@@ -1,0 +1,15 @@
+<h1>Messages</h1>
+<p>This is the messages that is coming from server via SignalR.</p>
+
+<!-- Bell icon and message count -->
+<div>
+  Click on bell to show all {{ signaldata.length }} messages
+  <img src="assets/notification.png" height="30px" width="30px" (click)="showMessage()" />
+</div>
+
+<!-- Message list shown only when showimage is true -->
+<div *ngIf="showimage">
+  <h2 *ngFor="let i of signaldata">
+    {{ i.information }}
+  </h2>
+</div>

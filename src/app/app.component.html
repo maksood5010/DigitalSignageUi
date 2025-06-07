@@ -1,11 +1,7 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-       <app-upload-form></app-upload-form>
-       <div class="mt-4">
-       <app-file-details></app-file-details>
-      <app-fullscreen-slideshow></app-fullscreen-slideshow>
-       </div>
-    </div>
-  </div>
-</div>
+<ul>
+ <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+  <li><a routerLink="/fileupload" routerLinkActive="active">File Upload</a></li>
+  <li><a routerLink="/sendmessage" routerLinkActive="active">Send Notification</a></li>
+</ul>
+
+<router-outlet></router-outlet>
